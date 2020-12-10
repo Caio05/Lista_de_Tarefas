@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "789336559966",
+    "project_id": "lista-de-tarefas-6b1a7",
+    "storage_bucket": "lista-de-tarefas-6b1a7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:789336559966:android:c19bdc31dd241539217fcf",
+        "android_client_info": {
+          "package_name": "br.usjt.ads20.listadetarefas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "789336559966-n92c0oo8l0kuge5nvs8lnulfb3k51jlj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxuAEIRg0vCwf6A0mlRHpw58uygoZEAkE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "789336559966-n92c0oo8l0kuge5nvs8lnulfb3k51jlj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
