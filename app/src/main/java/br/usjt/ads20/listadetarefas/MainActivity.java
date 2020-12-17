@@ -1,6 +1,5 @@
+/*Caio Castori de Oliveira RA 818234790*/
 package br.usjt.ads20.listadetarefas;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +8,10 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.view.Gravity;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -41,9 +44,10 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 TarefaDAO.completarTarefa(tarefas.get(i).getId());
                 setAdapter();
-
+                return;
             }
-        });}
+        });
+    }
 
 
     public void setAdapter() {
