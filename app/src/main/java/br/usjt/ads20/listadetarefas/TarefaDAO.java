@@ -21,7 +21,7 @@ public class TarefaDAO {
     // Access a Cloud Firestore instance from your Activity
     private static final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    public static String inserir(Tarefa tarefa){
+    public static String inserir(Tarefa tarefa) {
         Map<String, Object> tarefaMap = new HashMap<>();
         tarefaMap.put("tarefa", tarefa.getTarefa());
         tarefaMap.put("feita", tarefa.isFeita());
@@ -31,7 +31,7 @@ public class TarefaDAO {
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-                        Log.d(Tarefa.TAG, "Doc adcionado com o Id: "+documentReference.getId());
+                        Log.d(Tarefa.TAG, "Doc adcionado com o Id: " + documentReference.getId());
                         tarefa.setId(documentReference.getId());
                     }
                 })
@@ -44,7 +44,7 @@ public class TarefaDAO {
         return tarefa.getId();
     }
 
-    public static ArrayList<Tarefa> recuperarTodas(MainActivity activity){
+    public static ArrayList<Tarefa> recuperarTodas(MainActivity activity) {
         ArrayList<Tarefa> tarefas = new ArrayList<>();
         db.collection("tarefas")
                 .get()
@@ -52,7 +52,7 @@ public class TarefaDAO {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            for(QueryDocumentSnapshot document: task.getResult()){
+                            for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d(Tarefa.TAG, document.getId() + " => " + document.getData());
                                 Tarefa tarefa = new Tarefa();
                                 tarefa.setId(document.getId());
@@ -69,7 +69,7 @@ public class TarefaDAO {
         return tarefas;
     }
 
-    public static void apagarTarefa(String id){
+    public static void apagarTarefa(String id) {
         db.collection("tarefas").document(id)
                 .delete()
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -86,6 +86,9 @@ public class TarefaDAO {
                 });
     }
 
-
-
+    public static void completarTarefa(String id) {
+        Tarefa tarefa = new Tarefa();
+        db.collection("tarefas").document(id).update(
+                tarefa.setFeita(true)};)
+    }
 }

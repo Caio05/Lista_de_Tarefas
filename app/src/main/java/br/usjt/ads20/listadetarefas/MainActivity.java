@@ -36,22 +36,22 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
-
-        listView.setOnClickListener(new AdapterView.OnClickListener( ) {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public boolean onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                TarefaDAO.completarTarefa(tarefas.get(i).getId());
+                setAdapter();
 
-                return false;
             }
-        };
-    }
+        });}
 
-        public void setAdapter(){
+
+    public void setAdapter() {
         ArrayList<String> descricao = new ArrayList<>();
         //ordena o arraylist de tarefas
         Collections.sort(tarefas);
 
-        for(Tarefa tarefa: tarefas){
+        for (Tarefa tarefa : tarefas) {
             descricao.add(tarefa.getTarefa());
         }
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
