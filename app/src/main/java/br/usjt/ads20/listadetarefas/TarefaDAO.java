@@ -1,8 +1,11 @@
 /*Caio Castori de Oliveira RA 818234790*/
 package br.usjt.ads20.listadetarefas;
 
+import android.content.Context;
 import android.util.Log;
+import android.view.Gravity;
 import android.widget.Toast;
+
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -88,21 +91,21 @@ public class TarefaDAO {
                 });
     }
 
-    public static void completarTarefa(String id) {
+    public static void completarTarefa(String id, Context context) {
         db.collection("tarefas").document(id).update(
-                "feita", true
-        ).addOnSuccessListener(new OnSuccessListener<Void>() {
+                "feita", true)
+        .addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 Log.d(Tarefa.TAG, "Tarefa feita: " + id);
-            //    Toast.makeText(this, "Tarefa completa.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Tarefa concluída", Toast.LENGTH_SHORT).show();
             }
         })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Log.w(Tarefa.TAG, "Erro ao concluir tarefa", e);
-                        Toast.makeText(null,"Erro ao concluir tarefa",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Erro ao concluir tarefa", Toast.LENGTH_SHORT).show();
                     }
                 });
     }

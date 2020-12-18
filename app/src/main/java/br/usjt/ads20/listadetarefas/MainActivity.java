@@ -8,8 +8,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.view.Gravity;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -36,13 +34,13 @@ public class MainActivity extends AppCompatActivity {
                 TarefaDAO.apagarTarefa(tarefas.get(i).getId());
                 tarefas.remove(i);
                 setAdapter();
-                return false;
+                return true;
             }
         });
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                TarefaDAO.completarTarefa(tarefas.get(i).getId());
+                TarefaDAO.completarTarefa(tarefas.get(i).getId(),getApplicationContext());
                 setAdapter();
                 return;
             }
